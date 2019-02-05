@@ -37,16 +37,17 @@
     }
   </style>
   <!-- Script for sending "long url" to the backend/server -->
-  <!-- <script>
+  <script>
       $(document).ready(function(){
         $("#submit").click(function(){
-          url = $("#textBox").val();
+          url = $(".url-input").val();
           $.post("http://localhost:8080/login",{url: url},function(data){
-            alert("The url is sent to backend which is: "+data);
+            // alert("The url is sent to backend which is: "+data);
+            $(".url-input").val(data+"hello");
           });
         });
       });
-  </script> -->
+  </script>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
@@ -74,8 +75,8 @@
 <!-- For particle effect -->
 <div id="particles-js">
   <form id="input-space">
-    <input type="url" name="url" class="url-input" placeholder="Place your long URL eg: 'http://www.atoz.com/place-your-very-long-url-here'">
-    <button class="btn btn-primary" type="button">Submit</button>
+    <input type="url" name="url" class="url-input" placeholder="Place your long URL">
+    <button class="btn btn-primary" type="button" id="submit">Submit</button>
   </form>
 </div>
 
