@@ -14,12 +14,12 @@ app.get('/',function(req,res){
     res.sendFile("index.html");
 });
 
+//To get the url from user input and store it in DB
 app.post('/login',function(req,res){
     var lgurl = req.body.url;
     console.log("the long url is: "+lgurl);
     res.end(lgurl);
-    //var data = {}; //with insertMany() method, many entries can be inserted in an array form eg: data = [{a,b},{a,b},{a,b},{a,b},{a,b}];.
-
+    
     //To connect the MongoDB database 
     mongo.connect(url,{useNewUrlParser: true}, function(err, mongo) {
         if (err) throw err;
@@ -44,6 +44,13 @@ app.post('/login',function(req,res){
         });
     });
 
+});
+
+//For redirecting shorten url to main url
+app.get('/:key',function(req, res){
+    var keys = req.params.key;
+    console.log(keys);
+    res.redirect('https://www.google.com');
 });
 
 app.listen(8080,function(){
