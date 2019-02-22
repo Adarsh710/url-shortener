@@ -1,9 +1,9 @@
-var express = require('express');
+var express = require('express'),
 // var MongoClient = require('mongodb').MongoClient;
-var bodyparse = require('body-parser');
-var app = express();
-var mongo = require('mongodb').MongoClient;
-var address = "mongodb://localhost:27017/";
+bodyparse = require('body-parser'),
+app = express(),
+mongo = require('mongodb').MongoClient,
+address = "mongodb://localhost:27017/";
 
 app.use(express.static('main_files'));
 
@@ -14,16 +14,20 @@ app.get('/',function(req,res){
     res.sendFile("index.html");
 });
 
+var dbo;
+
+//To connect the MongoDB database 
+mongo.connect(address,{useNewUrlParser: true}, function(err, mongo) {
+    if (err) throw err;
+    dbo = mongo.db("MainDB");
+});
+
 //To get the url from user input and store it in DB
 app.post('/login',function(req,res){
     var lgurl = req.body.url;
     console.log("the long url is: "+lgurl);
     res.end(lgurl);
     
-    //To connect the MongoDB database 
-    mongo.connect(address,{useNewUrlParser: true}, function(err, mongo) {
-        if (err) throw err;
-        var dbo = mongo.db("MainDB");
         var data = {url: lgurl};
         //To find the url in the DB
         dbo.collection("URLs").find(data).toArray(function(err, result) {
@@ -35,16 +39,36 @@ app.post('/login',function(req,res){
             }
             else{
                 //To insert url into the DB
-                dbo.collection("URLs").insertOne(data, function(err, res) {
+                dbo.collection("URLs").insertOne({_id:getNextSequence("userid"), url: lgurl}, function(err, res) {
                     if (err) throw err;
                     console.log("1 document inserted : " + res);
                 });
             }
-            mongo.close();
         });
     });
 
-});
+
+function getNextSequence(name) {
+    var ret;
+    dbo.collection("counters").findOneAndUpdate(
+        //{ _id: name },{ $inc: { seq: 1 } },{upsert: true},
+        
+            {_id: name },
+            { $inc: { seq: 1 } },
+            {new: true},
+            function(err, res){
+                if(err) throw err;
+                else{
+                    return res.value.seq;
+                }
+            }
+    );
+    console.log(ret.res);
+        // function(err,doc) {
+        //         if (err) { throw err; }
+        //         else { console.log("Updated" + doc.seq); }
+        // });  
+ }
 
 //For redirecting shorten url to main url
 app.get('/:key',function(req, res){
