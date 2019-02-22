@@ -49,9 +49,7 @@ app.post('/login',function(req,res){
 
 
 function getNextSequence(name) {
-    var ret;
-    dbo.collection("counters").findOneAndUpdate(
-        //{ _id: name },{ $inc: { seq: 1 } },{upsert: true},
+    var ret = dbo.collection("counters").findOneAndUpdate(
         
             {_id: name },
             { $inc: { seq: 1 } },
@@ -59,11 +57,11 @@ function getNextSequence(name) {
             function(err, res){
                 if(err) throw err;
                 else{
-                    return res.value.seq;
+                    return res.value.seq; //Need to return this value to the variable 'ret' then that value return to the calling function.
                 }
             }
     );
-    console.log(ret.res);
+    return ret;
         // function(err,doc) {
         //         if (err) { throw err; }
         //         else { console.log("Updated" + doc.seq); }
