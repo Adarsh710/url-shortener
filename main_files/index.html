@@ -41,9 +41,10 @@
       $(document).ready(function(){
         $("#submit").click(function(){
           url = $(".url-input").val();
-          $.post("http://localhost:8080/login",{url: url},function(data){
+          $.post("http://localhost:8080/shorten",{url: url},function(data){
             // alert("The url is sent to backend which is: "+data);
-            $(".url-input").val(data+"hello");
+            var shurl = window.location.origin +"/"+ data.hash;
+            $(".url-input").val(shurl);
           });
         });
       });
