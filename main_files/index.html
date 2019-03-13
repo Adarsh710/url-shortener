@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <!-- Theme Made By www.w3schools.com - No Copyright -->
-  <title>Shorty | URL Shortener</title>
+  <title>Synopsize | URL Shortener</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
@@ -36,19 +36,7 @@
       width: 15%;
     }
   </style>
-  <!-- Script for sending "long url" to the backend/server -->
-  <script>
-      $(document).ready(function(){
-        $("#submit").click(function(){
-          url = $(".url-input").val();
-          $.post("http://localhost:8080/shorten",{url: url},function(data){
-            // alert("The url is sent to backend which is: "+data);
-            var shurl = window.location.origin +"/"+ data.hash;
-            $(".url-input").val(shurl);
-          });
-        });
-      });
-  </script>
+
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
@@ -287,9 +275,9 @@
   <div class="row">
     <div class="col-sm-5">
       <p>Contact us and we'll get back to you within 24 hours.</p>
-      <p><span class="glyphicon glyphicon-map-marker"></span> Chicago, US</p>
-      <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
-      <p><span class="glyphicon glyphicon-envelope"></span> myemail@something.com</p>
+      <p><span class="glyphicon glyphicon-map-marker"></span> Bhopal,MP, India</p>
+      <p><span class="glyphicon glyphicon-phone"></span> +91 8888888888</p>
+      <p><span class="glyphicon glyphicon-envelope"></span> mymail@gmail.com</p>
     </div>
     <div class="col-sm-7 slideanim">
       <div class="row">
@@ -303,7 +291,7 @@
       <textarea class="form-control" id="comments" name="comments" placeholder="Comment, Suggestion, Query" rows="5"></textarea><br>
       <div class="row">
         <div class="col-sm-12 form-group">
-          <button class="btn btn-default pull-right" type="submit">Send</button>
+          <button class="btn btn-default pull-right" id="Send" type="submit">Send</button>
         </div>
       </div>
     </div>
@@ -336,6 +324,7 @@ Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
   <p></p>
 </footer>
 
+<script src="main.js"></script>
 <script>
 $(document).ready(function(){
   // Add smooth scrolling to all links in navbar + footer link
