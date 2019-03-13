@@ -16,12 +16,15 @@
       "resolved": "https://registry.npmjs.org/array-flatten/-/array-flatten-1.1.1.tgz",
       "version": "1.1.1"
     },
+    "atob": "^2.1.2",
+    "base62": "^2.0.1",
     "bignumber.js": {
       "integrity": "sha512-eJzYkFYy9L4JzXsbymsFn3p54D+llV27oTQ+ziJG7WFRheJcNZilgVXMG0LoZtlQSKBsJdWtLFqOD0u+U0jZKA==",
       "resolved": "https://registry.npmjs.org/bignumber.js/-/bignumber.js-4.1.0.tgz",
       "version": "4.1.0"
     },
     "body-parser": "^1.18.3",
+    "btoa": "^1.2.1",
     "bytes": {
       "integrity": "sha1-0ygVQE1olpn4Wk6k+odV3ROpYEg=",
       "resolved": "https://registry.npmjs.org/bytes/-/bytes-3.0.0.tgz",
@@ -190,6 +193,7 @@
       "version": "2.1.21"
     },
     "mongodb": "^3.1.13",
+    "mongoose": "^5.4.17",
     "ms": {
       "integrity": "sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=",
       "resolved": "https://registry.npmjs.org/ms/-/ms-2.0.0.tgz",
