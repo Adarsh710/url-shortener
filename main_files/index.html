@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Theme Made By www.w3schools.com - No Copyright -->
   <title>Synopsize | URL Shortener</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,21 +18,21 @@
     }
     #input-space{
       position: absolute;
-      top:50%;
-      left: 2%;
-      width: 95%;
+      width: 100%;
     }
     .url-input{
-      line-height: 2;
-      width: 83%;
-      margin: 0px 8px 0px 10px;
+      width: 70%;
+      margin: 0% 1% 0% 4%;
       padding: 1px;
       border-radius: 4px;
-      box-shadow: transparent;
+      box-shadow: none;
+      font-size: xx-large;
     }
-    .btn{
-      margin-bottom: 1px;
+    #submit{
       width: 15%;
+      font-size: xx-large;
+      vertical-align: 0;
+      padding: 0;
     }
   </style>
 
@@ -48,7 +47,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#myPage">Logo</a>
+      <a class="navbar-brand" href="#myPage">Synopsize</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -63,9 +62,13 @@
 </nav>
 <!-- For particle effect -->
 <div id="particles-js">
+  
   <form id="input-space">
+    <h1 style="font-size:100px;text-align: center;padding: 10%;color: lightblue;">Synopsize</h1>
+    <div>
     <input type="url" name="url" class="url-input" placeholder="Place your long URL">
     <button class="btn btn-primary" type="button" id="submit">Submit</button>
+    </div>
   </form>
 </div>
 
