@@ -3,7 +3,7 @@ bodyparse = require('body-parser'),
 mongoose = require('mongoose'),
 promise,
 base62 = require('base62'),
-connectionString = "mongodb://localhost:27017/newDB",
+connectionString = "mongodb+srv://Admin:8461938504adarsh@cluster0-1vovb.mongodb.net/Synopsize?retryWrites=true",
 port = process.env.PORT || 8080,
 app = express();
 
@@ -14,7 +14,7 @@ app.use(bodyparse.json());
 
 // For listening the port
 app.listen(port,function(){
-    console.log("Started on port 8080");
+    console.log("App is Started");
 });
 
 app.get('/',function(req,res){
@@ -76,7 +76,7 @@ promise = mongoose.connect(connectionString);
 //     Counter.remove({}, function() {
 //         console.log('APP: Counter collection emptied');
 //         console.log('APP: Initializing Counter collection with a default value');
-//         var counter = new Counter({_id: 'url_count', count: 10000});
+//         var counter = new Counter({_id: 'url_count', count: 6000000000});
 //         counter.save(function(err) {
 //             if(err) {
 //                 console.error('APP: Error while initializing counter');
@@ -92,13 +92,11 @@ app.post('/shorten', function(req, res, next) {
     var urlData = req.body.url;
     URL.findOne({url: urlData}, function(err, doc) {
         if(doc) {
-            console.log('APP: URL found in DB');
             res.send({
                 url: urlData,
                 hash: base62.encode(doc._id),
             });
         } else {
-            console.log('APP: URL not found in DB, creating new document');
             var url = new URL({
                 url: urlData
             });
