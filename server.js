@@ -14,7 +14,7 @@ app.use(bodyparse.json());
 
 // For listening the port
 app.listen(port,function(){
-    console.log("Started on port 8080");
+    console.log("App is Started");
 });
 
 app.get('/',function(req,res){
@@ -92,13 +92,11 @@ app.post('/shorten', function(req, res, next) {
     var urlData = req.body.url;
     URL.findOne({url: urlData}, function(err, doc) {
         if(doc) {
-            console.log('APP: URL found in DB');
             res.send({
                 url: urlData,
                 hash: base62.encode(doc._id),
             });
         } else {
-            console.log('APP: URL not found in DB, creating new document');
             var url = new URL({
                 url: urlData
             });
