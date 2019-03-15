@@ -25,7 +25,12 @@ h4 {
 #brand-name{
   font-size: 7vw;
   text-align: center;
-  padding: 10%;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-bottom: 5%;
   color: lightblue;
 }
 .jumbotron {
